@@ -18,9 +18,9 @@ useEffect(()=>{
   }, [api])
   
 async function getQuote(){
-	let quoteApi = `https://api.gameofthronesquotes.xyz/v1/author/${firstName.toLowerCase()}/1`;
+	let quoteApi = `https://preetam-got-api.herokuapp.com/api/quotes/random?author=${firstName}`;
 	let quoteData = await fetch(quoteApi).then((response) => response.json())
-	setQuote(quoteData.sentence)
+	setQuote(quoteData[0].quote)
 	console.log(quote)
 	  };
 
