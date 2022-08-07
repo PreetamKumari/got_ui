@@ -7,8 +7,8 @@ export const CardDetails = () => {
 	let [quote, setQuote] = useState('')
 	let {firstName, fullName, imageUrl, family, title} = character;
 
-  let api = `https://thronesapi.com/api/v2/Characters/${id}`;
-  
+  let api = `https://preetam-got-api.herokuapp.com/api/characters/${id}`;
+  console.log(api)
   
 useEffect(()=>{
     (async function(){
@@ -18,7 +18,9 @@ useEffect(()=>{
   }, [api])
   
 async function getQuote(){
-	let quoteApi = `https://preetam-got-api.herokuapp.com/api/quotes/random?author=${firstName}`;
+	let quoteApi = `https://preetam-got-api.herokuapp.com/api/quotes/random?author=${fullName}`;
+	console.log(quoteApi)
+	// let localQuoteApi = `http://localhost:5000/api/quotes/random?author=${firstName}`
 	let quoteData = await fetch(quoteApi).then((response) => response.json())
 	setQuote(quoteData[0].quote)
 	console.log(quote)
