@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap'
 import Cards from './components/cards/Cards'
@@ -7,7 +6,8 @@ import Search from './components/search/Search'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import { CardDetails } from './components/cards/CardDetails'
 import Pagination from './components/pagination/Pagination'
-// import SpinnerFunction from './components/spinner/Spinner'
+import SpinnerFunction from './components/spinner/Spinner'
+import './App.css'
 
 function App() {
   return(
@@ -21,7 +21,7 @@ function App() {
 }
 
 const Home = () => {
-  // let [isLoading, setIsLoading] = useState(true)
+  let [isLoading, setIsLoading] = useState(true)
   let [characters, updateCharacters] = useState([]);
   let [name, setName] = useState('');
   let [pagenumber, setPageNumber] = useState(0)
@@ -35,11 +35,11 @@ const Home = () => {
     (async function(){
       let charactersData = await fetch(api).then(res=>res.json())
       updateCharacters(charactersData)
-      // setIsLoading(false)
+      setIsLoading(false)
     })();
   }, [api])
   return (
-    // isLoading? <SpinnerFunction />:
+    isLoading? <SpinnerFunction />:
     <div className="App">
         <h1 className='text-center ubuntu my-5'>
           Game of Thrones <span className="text-primary">Wiki</span>
